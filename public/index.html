@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+    <script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="form-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="../node_modules/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+    <script src="../node_modules/codemirror/mode/javascript/javascript.js"></script>
+    <style>
+        body { 
+        	margin:0; 
+        	padding:0; 
+        }
+        #map { 
+        	position:absolute; 
+        	top:0; 
+        	bottom:0; 
+        	width:60%; 
+        }
+        #inputs{
+        	position: absolute;
+        	left: 61%;
+        	width: 37%;
+        	top:10px;
+        }
+        textarea {
+          height: 300px
+        }
+    </style>
+</head>
+<body>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
+	<div id='map'></div>
+ 	<div id="inputs">
+    <ul id="tabs-swipe-demo" class="tabs">
+        <li class="tab col s3"><a href="#test-swipe-1">Area</a></li>
+        <li class="tab col s3"><a href="#test-swipe-2">Initial Zones</a></li>
+        <li class="tab col s3"><a href="#test-swipe-3">Reference Point</a></li>
+        <li class="tab col s3"><a href="#test-swipe-4">Reference Zones</a></li>
+    </ul>
+      <div id="test-swipe-1" class="col s12">
+      <br>
+      <button class="waves-effect waves-light btn" id="area" onclick="selectarea()">Select area</button>
+      <button class="waves-effect waves-light btn" id="savearea" onclick="savearea()" disabled="true">Save</button>
+      <textarea id="areacode" class="materialize-textarea">hola mundo</textarea>
+      </div>
+      <div id="test-swipe-2" class="col s12">
+      <br>
+      <button class="waves-effect waves-light btn" id="zones" onclick="selectzones()">Select zones</button>
+      <button class="waves-effect waves-light btn" id="savezones" onclick="savezones()" disabled="true">Save</button>
+      <textarea id="zonescode" class="materialize-textarea">hola mundo</textarea>
+      </div>
+      <div id="test-swipe-3" class="col s12">
+      <br>
+      <button class="waves-effect waves-light btn" id="point" onclick="selectpoint()">Select point</button>
+      <button class="waves-effect waves-light btn" id="savepoint" onclick="savepoint()" disabled="true">Save</button>
+      <textarea id="pointcode" class="materialize-textarea">Hola mundo</textarea>
+      </div>
+      <div id="test-swipe-4" class="col s12">
+      <br>
+      <button class="waves-effect waves-light btn" id="zonesr" onclick="selectzonesr()">Select zones</button>
+      <button class="waves-effect waves-light btn" id="savezonesr" onclick="savezonesr()" disabled="true">Save</button>
+      <textarea id="zonesrcode" class="materialize-textarea">Hola mundo</textarea>
+      </div>
+    <button onclick="send()">Send</button>
+    <button onclick="play()">Play</button>
+	</div>
+	<script src="main.js"></script>
+	<style type="text/css">
+	.mapboxgl-ctrl-top-right{
+		right: 10px;
+	}
+	.mapbox-gl-draw_combine {
+		background-image: url("lightning-solid.png");
+		background-size: 50%;
+	}
+	.mapbox-gl-draw_uncombine {
+		background-image: url("play-solid.png");
+		background-size: 50%;
+	}
+	</style>
+<!--      <script type="text/javascript">
+        var editor = CodeMirror.fromTextArea(document.getElementById("areacode"),{
+          mode: "application/ld+json",
+          lineWrapping: true
+        });
+    </script> -->
+</body>
+</html>
